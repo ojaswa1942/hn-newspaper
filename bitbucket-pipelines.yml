@@ -5,10 +5,10 @@ pipelines:
     - step:
         name: Save Key
         script:
-          - echo $OPS_KEY_ENC | base64 -d > $HOME/KEY
-          - chmod 400 $HOME/KEY
+          - echo $OPS_KEY_ENC | base64 -d > SERVERKEY
+          - chmod 400 SERVERKEY
         artifacts:
-          - $HOME/KEY
+          - SERVERKEY
 
     - step:
         name: Install dependencies, build and deploy
@@ -18,10 +18,11 @@ pipelines:
           - yarn install
           - yarn build
         artifacts:
-          - ./build
+          - build
 
     - step:
         name: Deploy to server
+        deployment: production
         script:
           - apk add openssh
           - scp -r -i "$HOME/KEY" -o StrictHostKeyChecking=no ./build ops@url.ojaswa.com:/var/www/hn-newspaper/
