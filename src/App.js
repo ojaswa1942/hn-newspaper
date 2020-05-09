@@ -1,5 +1,5 @@
 import React from 'react';
-import Loader from './Components/_Loader/Loader';
+import ArticleContainer from './Components/ArticleContainer/ArticleContainer';
 import Header from './Components/Header/Header';
 
 import styles from './App.module.css';
@@ -8,7 +8,7 @@ function App() {
   return (
     <div className={styles.App} >
         <Header />
-        <Loader />
+        <ArticleContainer />
     </div>
   );
 }
