@@ -1,0 +1,27 @@
+# This is a sample build configuration for JavaScript.
+# Check our guides at https://confluence.atlassian.com/x/14UWN for more examples.
+# Only use spaces to indent your .yml configuration.
+# -----
+# You can specify a custom docker image from Docker Hub as your build environment.
+image: node:alpine
+
+pipelines:
+  default:
+    - step:
+        name: Save Key
+        script:
+          - echo $OPS_KEY_ENC | base64 -d > $HOME/KEY
+          - chmod 400 $HOME/KEY
+
+    - step:
+        name: Install dependencies and build
+        caches:
+          - node
+        script:
+          - yarn install
+          - yarn build
+
+    - step:
+        name: Deploy to server
+        script:
+          - scp -r -i "$HOME/KEY" -o StrictHostKeyChecking=no ./build ops@url.ojaswa.com:/var/www/hn-newspaper/
