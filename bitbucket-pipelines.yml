@@ -1,4 +1,4 @@
-image: ubuntu-latest
+image: mhart/alpine-node
 
 pipelines:
   default:
@@ -12,7 +12,6 @@ pipelines:
 
     - step:
         name: Install dependencies, build and deploy
-        image: alpine
         caches:
           - node
         script:
@@ -24,4 +23,5 @@ pipelines:
     - step:
         name: Deploy to server
         script:
+          - apk add openssh
           - scp -r -i "$HOME/KEY" -o StrictHostKeyChecking=no ./build ops@url.ojaswa.com:/var/www/hn-newspaper/
