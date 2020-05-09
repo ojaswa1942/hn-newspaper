@@ -18,11 +18,11 @@ pipelines:
           - yarn install
           - yarn build
         artifacts:
-          - build
+          - build/**
 
     - step:
         name: Deploy to server
         deployment: production
         script:
           - apk add openssh
-          - scp -r -i SERVERKEY -o StrictHostKeyChecking=no ./build ops@url.ojaswa.com:/var/www/hn-newspaper/
+          - scp -r -i SERVERKEY -o StrictHostKeyChecking=no build/ ops@url.ojaswa.com:/var/www/hn-newspaper
