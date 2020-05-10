@@ -1,9 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Rokkitt&display=swap');
+
 .resultCard {
-    font-size: 14px;
-    line-height: 20px;
-    padding: 0 5px 0 5px;
-    margin-bottom: 20px;
+    padding: 0 10px 0 10px;
     transition: all .7s;
     border-bottom: 1px solid gray;
-    overflow: hidden;
+    vertical-align: middle;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.resultHeading {
+    text-decoration: none;
+    font-family: 'Playfair Display', serif;
+    color: #2f2f2f;
+    font-weight: bold;
+}
+.resultInfo {
+    text-decoration: none;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0px 20px 0px 20px;
+    margin-bottom: 15px;
+}
+.resultInfo a {
+    text-decoration: none; 
+}
+
+.resultContent {
+    text-align: left;
+    font-family: 'Rokkitt', serif;
 }

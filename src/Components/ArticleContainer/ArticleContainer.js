@@ -10,7 +10,7 @@ const NewsList = ({ newsArray }) => {
 		return <ArticleCard
 	 		key = {i}
 	 		{...newss}
-	 		score = {normalizedScore(newss.score, max, min)}
+	 		normalizedScore = {normalizedScore(newss.score, max, min)}
 	 	/>;
 	});
 	let size = renderArray.length;

@@ -1,14 +1,25 @@
 .container_main {
+	margin-top: 10px;
 	overflow-wrap: break-word;
 	display: grid;
-	grid-template-columns: 1fr 4fr 2fr 2fr;
+	/*grid-template-columns: 3fr 1fr 4fr 1fr;*/
+	grid-template-columns: repeat(auto-fit, minmax(1fr, 4fr));
 	grid-auto-flow: column;
+	overflow-x: auto;
 }
-
 
 .newsList {
 	border-right: 1px solid gray;
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
+}
+
+@media (max-width: 1500px) {
+  .container_main {
+	grid-template-columns: 1fr 1fr 1fr;
+  }
+  .newsList:nth-child(1){
+  	display: none;
+  }
 }
