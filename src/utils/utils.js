@@ -4,6 +4,15 @@ export const getMaxMin = ( newsResponse ) => {
 }
 
 export const normalizedScore = ( val, max, min ) => {
+    if(val > 100)
+        val /= 10;
+    if (max > 100)
+        max /= 10;
+    if(val > 100)
+        val /= 10;
+    if (max > 100)
+        max /= 10;
+    
     return ((val - min)/(max - min));
 }
 

@@ -7,23 +7,21 @@ const ArticleCard = ({ title, id, normalizedScore, by, text, time }) => {
 	let hrefUser = `https://news.ycombinator.com/user?id=${by}`;
 	let profileTitle= `See ${by} profile`;
 	let estimateTime = calculateDateTime(new Date(), new Date(time*1000));
+	let fontSize = (normalizedScore)? normalizedScore*100 : `inherit`;
+
+	if(fontSize < 24)
+		fontSize = `24px`;
 
 	return(
 		<div className={styles.resultCard}>
-			<div className="resultCard-content-wrapper">
-				<div className='resultCard-title-and-infos'>
-					<h2>
-						<a target="_blank" rel="noopener noreferrer" title="See original on ycombinator" href={hrefPoint}>{title}</a>
-					</h2>
-						<span>
-							<a href={hrefUser} target="_blank" rel="noopener noreferrer" title={profileTitle} >{by}</a>
-							<span title={new Date(time*1000)} >{estimateTime}</span>
-						</span>
-						<div dangerouslySetInnerHTML={{__html: text}} >
-						</div>
-				</div>
-				<br />
-			</div>
+			<a className={styles.resultHeading} style={{ fontSize }} target="_blank" rel="noopener noreferrer" title="See original on YCombinator" href={hrefPoint}>
+				{title}
+			</a>
+				<span className={styles.resultInfo} >
+					<a href={hrefUser} target="_blank" rel="noopener noreferrer" title={profileTitle} >{by}</a>
+					<span title={new Date(time*1000)} >{estimateTime}</span>
+				</span>
+			<div className={styles.resultContent} dangerouslySetInnerHTML={{__html: text}} />
 		</div>
 	);
 }
