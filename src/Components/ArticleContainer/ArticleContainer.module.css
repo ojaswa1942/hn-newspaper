@@ -1,3 +1,14 @@
 .container_main {
+	overflow-wrap: break-word;
+	display: grid;
+	grid-template-columns: 1fr 4fr 2fr 2fr;
+	grid-auto-flow: column;
+}
 
+
+.newsList {
+	border-right: 1px solid gray;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
 }

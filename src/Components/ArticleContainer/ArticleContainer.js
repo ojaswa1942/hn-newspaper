@@ -13,7 +13,24 @@ const NewsList = ({ newsArray }) => {
 	 		score = {normalizedScore(newss.score, max, min)}
 	 	/>;
 	});
-	return renderArray;
+	let size = renderArray.length;
+
+	return (
+		<>
+		<div className={styles.newsList}>
+			{renderArray.slice(0, size/4)}
+		</div>
+		<div className={styles.newsList}>
+			{renderArray.slice(size/4, (2*size)/4)}
+		</div>
+		<div className={styles.newsList}>
+			{renderArray.slice((2*size)/4, (3*size)/4)}
+		</div>
+		<div className={styles.newsList}>
+			{renderArray.slice((3*size)/4, size)}
+		</div>
+		</>
+	);
 }
 
 const ArticleContainer = () => {
@@ -30,7 +47,7 @@ const ArticleContainer = () => {
 				fetch(`https://hacker-news.firebaseio.com/v0/item/${id}.json`)
 				.then(res => res.json())
 				.then(newsPerId => {
-					if(newsPerId.type === "story"){
+					if(newsPerId.type === "story" && newsPerId.text ){
 						updateNews(state => [...state, newsPerId]);
 						if(isLoading)
 							changeLoadingState(false);	
@@ -53,12 +70,10 @@ const ArticleContainer = () => {
 			</div>
 		);
 	}
-	console.log(news);
 
 	return(
 	  	<div className={styles.container_main}>
 			<NewsList newsArray={news} />
-			{news.length}
 		</div>
 	);
 }

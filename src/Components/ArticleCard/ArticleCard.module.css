@@ -1,0 +1,9 @@
+.resultCard {
+    font-size: 14px;
+    line-height: 20px;
+    padding: 0 5px 0 5px;
+    margin-bottom: 20px;
+    transition: all .7s;
+    border-bottom: 1px solid gray;
+    overflow: hidden;
+}
