@@ -11,6 +11,7 @@ const ArticleCard = ({ title, id, normalizedScore, by, text, time }) => {
 
 	if(fontSize < 24)
 		fontSize = `24px`;
+	else fontSize += 'px';
 
 	return(
 		<div className={styles.resultCard}>
